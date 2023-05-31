@@ -56,7 +56,7 @@ test("Dosen't place invalid ship: Out of bounds, vertical", () => {
   expect(aBoard.getBoard()).toStrictEqual(Array(100).fill(0));
 });
 
-test("Dosen't place invalid ship: overlap", () => {
+test("Dosen't place invalid ship: overlap, vertical", () => {
   const aBoard = Gameboard();
   aBoard.placeShip(0, "v", 5, 1);
   aBoard.placeShip(30, "v", 5, 1);
