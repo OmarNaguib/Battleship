@@ -1,7 +1,11 @@
 import sliceWithStep from "./utils/sliceWithStep";
 
 export default function Gameboard() {
-  const board = Array(100).fill(0);
+  let board = Array(100).fill(0);
+  const getBoard = () => board;
+  const setBoard = (value) => {
+    board = value;
+  };
 
   const rowOf = (index) => Math.floor(index / 10);
   const columnOf = (index) => index % 10;
@@ -29,14 +33,28 @@ export default function Gameboard() {
   const isZero = (item) => item === 0;
   const validPlacement = (index, orientaion, length) => {
     let slice;
-    if (orientaion === "h") slice = getSliceH(index);
-    if (orientaion === "v") slice = getSliceV(index);
+    if (orientaion === "h") slice = getSliceH(index, length);
+    if (orientaion === "v") slice = getSliceV(index, length);
     return slice.length >= length && slice.every(isZero);
   };
-  return { board, getRow, getColumn, validPlacement };
-}
 
-const aBoard = Gameboard();
-console.log(aBoard.getColumn(59));
-console.log(aBoard.validPlacement(5, "h", 0));
-console.log(aBoard.validPlacement(5, "h", 6));
+  const placeShipH = (index, length, value, array = board) => {
+    const newArray = [...array];
+    for (let i = 0; i < length; i += 1) newArray[index + i] = value;
+    return newArray;
+  };
+  const placeShipV = (index, length, value, array = board) => {
+    const newArray = [...array];
+    for (let i = 0; i < length; i += 1) newArray[index + i * 10] = value;
+    return newArray;
+  };
+
+  const placeShip = (index, orientaion, length, value) => {
+    if (validPlacement(index, orientaion, length)) {
+      console.log(this, "here");
+      if (orientaion === "h") setBoard(placeShipH(index, length, value));
+      if (orientaion === "v") setBoard(placeShipV(index, length, value));
+    }
+  };
+  return { getBoard, setBoard, getRow, getColumn, validPlacement, placeShip };
+}
