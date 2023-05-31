@@ -5,6 +5,7 @@ const createGrid = (array) => {
   const buttonList = array.map((element, index) => {
     const button = document.createElement("button");
     button.classList.add("square");
+    if (element > 0) button.classList.add("ship");
     button.dataset.index = index;
     grid.appendChild(button);
     return button;
@@ -12,8 +13,8 @@ const createGrid = (array) => {
   return { grid, buttonList };
 };
 
-function Grid(array) {
-  const { grid, buttonList } = createGrid();
+export default function Grid(array) {
+  const { grid, buttonList } = createGrid(array);
   const updateSquare = (index) => {
     buttonList[index].classList.add("hit");
   };
