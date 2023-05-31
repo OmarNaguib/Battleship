@@ -6,7 +6,7 @@ export default function Gameboard() {
   const setBoard = (value) => {
     board = value;
   };
-
+  // placment helpers
   const rowOf = (index) => Math.floor(index / 10);
   const columnOf = (index) => index % 10;
 
@@ -48,7 +48,7 @@ export default function Gameboard() {
     for (let i = 0; i < length; i += 1) newArray[index + i * 10] = value;
     return newArray;
   };
-
+  // value parameter is added to provide capability of ship identification
   const placeShip = (index, orientaion, length, value) => {
     if (validPlacement(index, orientaion, length)) {
       console.log(this, "here");
