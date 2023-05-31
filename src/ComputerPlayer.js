@@ -6,8 +6,8 @@ export default function ComputerPlayer(player) {
     let hitSquare = getRandomSquare();
     let isHit = player.getEnemyPlayer().getBoard().takeHit(hitSquare);
     while (isHit === null) {
-      hitSquare += 1;
-      isHit = this.getEnemyPlayer().getBoard().takeHit(hitSquare);
+      hitSquare = (hitSquare + 1) % 100;
+      isHit = player.getEnemyPlayer().getBoard().takeHit(hitSquare);
     }
   }
 
