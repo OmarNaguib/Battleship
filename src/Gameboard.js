@@ -56,5 +56,27 @@ export default function Gameboard() {
       if (orientaion === "v") setBoard(placeShipV(index, length, value));
     }
   };
-  return { getBoard, setBoard, getRow, getColumn, validPlacement, placeShip };
+
+  const takeHit = (index) => {
+    if (board[index] === 0) {
+      board[index] = -1000;
+      return false;
+    }
+    if (board[index] > 0) {
+      board[index] *= -1;
+      return true;
+    }
+    return null;
+  };
+
+  const allSunk = () => board.every((value) => value < 0);
+  return {
+    getBoard,
+    setBoard,
+    getRow,
+    getColumn,
+    validPlacement,
+    placeShip,
+    takeHit,
+  };
 }

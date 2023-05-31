@@ -68,6 +68,31 @@ test("Dosen't place invalid ship: overlap, vertical", () => {
   ]);
 });
 
+test("Takes hit:On ship", () => {
+  const aBoard = Gameboard();
+  aBoard.placeShip(0, "h", 5, 1);
+  aBoard.takeHit(0);
+  expect(aBoard.getBoard()).toStrictEqual(
+    Array(1)
+      .fill(-1)
+      .concat(Array(4).fill(1).concat(Array(95).fill(0)))
+  );
+});
+
+test("Takes hit:On empty square", () => {
+  const aBoard = Gameboard();
+  aBoard.takeHit(0);
+  expect(aBoard.getBoard()).toStrictEqual(
+    Array(1).fill(-1000).concat(Array(99).fill(0))
+  );
+});
+
+test("Return null on rehit", () => {
+  const aBoard = Gameboard();
+  aBoard.takeHit(0);
+  expect(aBoard.takeHit(0)).toStrictEqual(null);
+});
+
 /* [
   1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
