@@ -9,7 +9,7 @@ export default function ComputerPlayer(player) {
       hitSquare = (hitSquare + 1) % 100;
       isHit = player.getEnemyPlayer().getBoard().takeHit(hitSquare);
     }
-    return { hitSquare, isHit };
+    return Promise.resolve({ hitSquare, isHit });
   }
 
   return {
