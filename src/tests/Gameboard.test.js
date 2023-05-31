@@ -52,7 +52,6 @@ test("Places a ship: vertical", () => {
 test("Dosen't place invalid ship: Out of bounds, vertical", () => {
   const aBoard = Gameboard();
   aBoard.placeShip(91, "v", 6, 1);
-  console.log(aBoard.getBoard());
   expect(aBoard.getBoard()).toStrictEqual(Array(100).fill(0));
 });
 

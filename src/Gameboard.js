@@ -51,17 +51,18 @@ export default function Gameboard() {
   // value parameter is added to provide capability of ship identification
   const placeShip = (index, orientaion, length, value) => {
     if (validPlacement(index, orientaion, length)) {
-      console.log(this, "here");
       if (orientaion === "h") setBoard(placeShipH(index, length, value));
       if (orientaion === "v") setBoard(placeShipV(index, length, value));
     }
   };
 
   const takeHit = (index) => {
+    if (board[index] === -1000) return null;
     if (board[index] === 0) {
       board[index] = -1000;
       return false;
     }
+
     if (board[index] > 0) {
       board[index] *= -1;
       return true;

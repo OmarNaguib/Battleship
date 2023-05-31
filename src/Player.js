@@ -8,11 +8,12 @@ export default function Player(name) {
   const setEnemyPlayer = (value) => {
     enemyPlayer = value;
   };
+  const getEnemyPlayer = () => enemyPlayer;
   const hitEnemy = (index) => enemyPlayer.getBoard().takeHit(index);
   return {
     name,
     getBoard,
-    enemyPlayer,
+    getEnemyPlayer,
     setBoard,
     setEnemyPlayer,
     hitEnemy,

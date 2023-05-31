@@ -1,7 +1,6 @@
 import Player from "../Player";
 import Gameboard from "../Gameboard";
 
-beforeAll(() => {});
 test("hits enemy", () => {
   const player1 = Player("one");
   const player2 = Player("two");
