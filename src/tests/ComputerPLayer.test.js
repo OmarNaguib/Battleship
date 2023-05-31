@@ -20,10 +20,7 @@ test("hits all squares in 100 tries", () => {
   player2.setBoard(Gameboard());
   computer.setEnemyPlayer(player2);
   player2.setEnemyPlayer(computer);
-  for (let i = 0; i <= 99; i += 1) {
-    console.log("here");
-    computer.hitEnemy();
-    console.log("here");
-  }
+  for (let i = 0; i <= 99; i += 1) computer.hitEnemy();
+
   expect(player2.getBoard().getBoard()).toStrictEqual(Array(100).fill(-1000));
 });
