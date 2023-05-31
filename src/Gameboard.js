@@ -69,7 +69,7 @@ export default function Gameboard() {
     return null;
   };
 
-  const allSunk = () => board.every((value) => value < 0);
+  const allSunk = () => board.every((value) => value <= 0);
   return {
     getBoard,
     setBoard,
@@ -78,5 +78,6 @@ export default function Gameboard() {
     validPlacement,
     placeShip,
     takeHit,
+    allSunk,
   };
 }

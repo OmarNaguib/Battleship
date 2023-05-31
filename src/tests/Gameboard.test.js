@@ -93,6 +93,24 @@ test("Return null on rehit", () => {
   expect(aBoard.takeHit(0)).toStrictEqual(null);
 });
 
+test("allSunk: no ships", () => {
+  const aBoard = Gameboard();
+  expect(aBoard.allSunk()).toBe(true);
+});
+
+test("allSunk: with floating ships", () => {
+  const aBoard = Gameboard();
+  aBoard.placeShip(0, "h", 5, 1);
+  expect(aBoard.allSunk()).toBe(false);
+});
+
+test("allSunk: with sunk ships", () => {
+  const aBoard = Gameboard();
+  aBoard.placeShip(0, "h", 2, 1);
+  aBoard.takeHit(0);
+  aBoard.takeHit(1);
+  expect(aBoard.allSunk()).toBe(true);
+});
 /* [
   1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
