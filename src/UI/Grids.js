@@ -1,3 +1,5 @@
+import pipe from "lodash/fp/flow";
+
 const createGrid = (array) => {
   const grid = document.createElement("div");
   grid.classList.add("grid");
@@ -25,7 +27,7 @@ function Grid(array) {
   };
 }
 
-function GridThatListens(grid) {
+function addListening(grid) {
   const listener = new AbortController();
   const addListeners = (buttonList, callback) => {
     buttonList.forEach((button, index) => {
@@ -52,5 +54,5 @@ function GridThatListens(grid) {
     listen,
   };
 }
-
+const GridThatListens = pipe(Grid, addListening);
 export { Grid, GridThatListens };
