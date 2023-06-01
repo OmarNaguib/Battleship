@@ -3,7 +3,8 @@ import Gameboard from "../Gameboard";
 import Player from "../Player";
 
 test("hits enemy", () => {
-  const computer = ComputerPlayer(Player("computer"));
+  const computer = ComputerPlayer("computer");
+  console.log(computer);
   const player2 = Player("two");
   computer.setBoard(Gameboard());
   player2.setBoard(Gameboard());

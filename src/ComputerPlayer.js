@@ -1,5 +1,8 @@
 // Mixin
-export default function ComputerPlayer(player) {
+import pipe from "lodash/fp/flow";
+import Player from "./Player";
+
+function addComputerHit(player) {
   const getRandomSquare = () => Math.floor(Math.random() * 100);
 
   function hitEnemy() {
@@ -17,3 +20,5 @@ export default function ComputerPlayer(player) {
     hitEnemy,
   };
 }
+const ComputerPlayer = pipe(Player, addComputerHit);
+export default ComputerPlayer;
