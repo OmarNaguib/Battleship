@@ -39,7 +39,6 @@ function addListening(grid) {
       button.addEventListener(
         "click",
         () => {
-          console.log(callback);
           callback(index);
           listener.abort();
           // button will not have listeners in the future
@@ -51,7 +50,6 @@ function addListening(grid) {
   };
   const listen = () => {
     const hitIndex = new Promise((resolve) => {
-      console.log(resolve);
       addListeners(grid.buttonList, resolve);
     });
     return hitIndex;

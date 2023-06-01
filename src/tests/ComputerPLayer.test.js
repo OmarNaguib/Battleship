@@ -4,7 +4,6 @@ import Player from "../Player";
 
 test("hits enemy", () => {
   const computer = ComputerPlayer("computer");
-  console.log(computer);
   const player2 = Player("two");
   computer.setBoard(Gameboard());
   player2.setBoard(Gameboard());
