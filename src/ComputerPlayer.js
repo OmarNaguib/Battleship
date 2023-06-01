@@ -7,10 +7,10 @@ function addComputerHit(player) {
 
   function hitEnemy() {
     let hitSquare = getRandomSquare();
-    let isHit = player.getEnemyPlayer().getBoard().takeHit(hitSquare);
+    let isHit = player.deliverHit(hitSquare);
     while (isHit === null) {
       hitSquare = (hitSquare + 1) % 100;
-      isHit = player.getEnemyPlayer().getBoard().takeHit(hitSquare);
+      isHit = player.deliverHit(hitSquare);
     }
     return Promise.resolve({ hitSquare, isHit });
   }

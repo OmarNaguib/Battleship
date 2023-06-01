@@ -20,10 +20,15 @@ function Grid(array) {
   const updateSquare = (index) => {
     buttonList[index].classList.add("hit");
   };
+
+  const deleteButton = (index) => {
+    delete buttonList[index];
+  };
   return {
     grid,
     buttonList,
     updateSquare,
+    deleteButton,
   };
 }
 
@@ -37,6 +42,8 @@ function addListening(grid) {
           console.log(callback);
           callback(index);
           listener.abort();
+          // button will not have listeners in the future
+          grid.deleteButton(index);
         },
         { signal: listener.signal }
       );

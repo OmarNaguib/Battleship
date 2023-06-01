@@ -9,13 +9,13 @@ export default function Player(name) {
     enemyPlayer = value;
   };
   const getEnemyPlayer = () => enemyPlayer;
-  const hitEnemy = (index) => enemyPlayer.getBoard().takeHit(index);
+  const deliverHit = (index) => enemyPlayer.getBoard().takeHit(index);
   return {
     name,
     getBoard,
     getEnemyPlayer,
     setBoard,
     setEnemyPlayer,
-    hitEnemy,
+    deliverHit,
   };
 }
