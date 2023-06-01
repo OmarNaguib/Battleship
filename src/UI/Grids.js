@@ -29,9 +29,10 @@ function GridThatListens(grid) {
   const listener = new AbortController();
   const addListeners = (buttonList, callback) => {
     buttonList.forEach((button, index) => {
-      button.addEventListner(
+      button.addEventListener(
         "click",
         () => {
+          console.log(callback);
           callback(index);
           listener.abort();
         },
@@ -41,6 +42,7 @@ function GridThatListens(grid) {
   };
   const listen = () => {
     const hitIndex = new Promise((resolve) => {
+      console.log(resolve);
       addListeners(grid.buttonList, resolve);
     });
     return hitIndex;
@@ -51,4 +53,4 @@ function GridThatListens(grid) {
   };
 }
 
-export default { Grid, GridThatListens };
+export { Grid, GridThatListens };
