@@ -13,7 +13,7 @@ const createGrid = (array) => {
   return { grid, buttonList };
 };
 
-export default function Grid(array) {
+function Grid(array) {
   const { grid, buttonList } = createGrid(array);
   const updateSquare = (index) => {
     buttonList[index].classList.add("hit");
@@ -24,3 +24,31 @@ export default function Grid(array) {
     updateSquare,
   };
 }
+
+function GridThatListens(grid) {
+  const listener = new AbortController();
+  const addListeners = (buttonList, callback) => {
+    buttonList.forEach((button, index) => {
+      button.addEventListner(
+        "click",
+        () => {
+          callback(index);
+          listener.abort();
+        },
+        { signal: listener.signal }
+      );
+    });
+  };
+  const listen = () => {
+    const hitIndex = new Promise((resolve) => {
+      addListeners(grid.buttonList, resolve);
+    });
+    return hitIndex;
+  };
+  return {
+    ...grid,
+    listen,
+  };
+}
+
+export default { Grid, GridThatListens };
