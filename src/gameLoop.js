@@ -3,7 +3,7 @@
 import GameBoard from "./Gameboard";
 import ComputerPlayer from "./ComputerPlayer";
 
-async function gameLoop(players) {
+export default async function gameLoop(players) {
   let currentPlayer = 0;
   let gameEnd = false;
   while (!gameEnd) {

@@ -11,7 +11,7 @@ test("hits enemy", async () => {
   human.setEnemyPlayer(player2);
   player2.setEnemyPlayer(human);
   const grid = GridThatListens(player2.getBoard().getBoard());
-  human.setGrid(grid);
+  human.setEnemyGrid(grid);
   human.hitEnemy();
 
   grid.buttonList[0].click();

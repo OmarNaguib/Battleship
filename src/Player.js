@@ -1,6 +1,11 @@
 export default function Player(name) {
   let board;
   let enemyPlayer;
+  let enemyGrid;
+  const setEnemyGrid = (value) => {
+    enemyGrid = value;
+  };
+  const getEnemyGrid = () => enemyGrid;
   const setBoard = (value) => {
     board = value;
   };
@@ -17,5 +22,7 @@ export default function Player(name) {
     setBoard,
     setEnemyPlayer,
     deliverHit,
+    setEnemyGrid,
+    getEnemyGrid,
   };
 }

@@ -2,13 +2,8 @@ import pipe from "lodash/fp/flow";
 import Player from "./Player";
 
 function addHumanHit(player) {
-  let grid;
-  const setGrid = (value) => {
-    grid = value;
-  };
-  const getGrid = () => grid;
   const hitEnemy = async () => {
-    const hitSquare = await grid.listen();
+    const hitSquare = await player.getGrid().listen();
     console.log("here", hitSquare);
 
     const isHit = player.deliverHit(hitSquare);
@@ -17,7 +12,7 @@ function addHumanHit(player) {
     return { hitSquare, isHit };
   };
 
-  return { ...player, hitEnemy, setGrid, getGrid };
+  return { ...player, hitEnemy };
 }
 const HumanPLayer = pipe(Player, addHumanHit);
 
