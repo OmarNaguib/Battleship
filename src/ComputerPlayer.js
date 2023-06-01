@@ -12,7 +12,7 @@ function addComputerHit(player) {
       hitSquare = (hitSquare + 1) % 100;
       isHit = player.deliverHit(hitSquare);
     }
-    return Promise.resolve({ hitSquare, isHit });
+    return { hitSquare, isHit };
   }
 
   return {
