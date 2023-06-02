@@ -7,7 +7,6 @@ const createGrid = (array) => {
   const buttonList = array.map((element, index) => {
     const button = document.createElement("button");
     button.classList.add("square");
-    if (element > 0) button.classList.add("ship");
     button.dataset.index = index;
     grid.appendChild(button);
     return button;
