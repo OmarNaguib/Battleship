@@ -17,13 +17,15 @@ const createGrid = (array) => {
 
 function Grid(array) {
   const { grid, buttonList } = createGrid(array);
-  const updateSquare = (index) => {
-    buttonList[index].classList.add("hit");
-  };
-
   const deleteButton = (index) => {
     delete buttonList[index];
   };
+  const updateSquare = (index) => {
+    buttonList[index].classList.add("hit");
+    // button will not have listeners in the future
+    deleteButton(index);
+  };
+
   return {
     grid,
     buttonList,
@@ -42,8 +44,6 @@ function addListening(grid) {
           () => {
             callback(index);
             controller.abort();
-            // button will not have listeners in the future
-            grid.deleteButton(index);
           },
           { signal: controller.signal }
         );
