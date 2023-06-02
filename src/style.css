@@ -49,3 +49,6 @@ body {
 .ship.hit {
   background-color: red;
 }
+.hit {
+  background-color: blue;
+}

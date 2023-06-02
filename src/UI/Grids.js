@@ -27,7 +27,10 @@ function Grid(array) {
     deleteButton(index);
   };
 
-  const displayShipH = (index, length) => {};
+  const displayShipH = (index, length) => {
+    for (let i = 0; i < length; i += 1)
+      buttonList[index + i].classList.add("ship");
+  };
   const displayShipV = (idnex, length) => {};
   const displayShip = (index, orientation, length) => {
     if (orientation === "h") displayShipH(index, length);
@@ -39,6 +42,7 @@ function Grid(array) {
     buttonList,
     updateSquare,
     deleteButton,
+    displayShip,
   };
 }
 

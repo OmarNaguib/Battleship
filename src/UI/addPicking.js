@@ -59,6 +59,7 @@ export default function addPicking(player) {
         .getBoard()
         .placeShip(pick, "h", shipLengths[currentIndex]);
       if (isValid) {
+        myGrid.displayShip(pick, "h", shipLengths[currentIndex]);
         currentIndex += 1;
         // Todo: update the display
       }
