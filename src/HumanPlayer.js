@@ -3,12 +3,8 @@ import Player from "./Player";
 
 function addHumanHit(player) {
   const hitEnemy = async () => {
-    const hitSquare = await player.getGrid().listen();
-    console.log("here", hitSquare);
-
+    const hitSquare = await player.getEnemyGrid().listen();
     const isHit = player.deliverHit(hitSquare);
-    console.log(player.getEnemyPlayer().getBoard().getBoard()[0]);
-
     return { hitSquare, isHit };
   };
 

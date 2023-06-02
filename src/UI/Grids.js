@@ -33,19 +33,21 @@ function Grid(array) {
 }
 
 function addListening(grid) {
-  const listener = new AbortController();
   const addListeners = (buttonList, callback) => {
+    const controller = new AbortController();
     buttonList.forEach((button, index) => {
-      button.addEventListener(
-        "click",
-        () => {
-          callback(index);
-          listener.abort();
-          // button will not have listeners in the future
-          grid.deleteButton(index);
-        },
-        { signal: listener.signal }
-      );
+      if (button) {
+        button.addEventListener(
+          "click",
+          () => {
+            callback(index);
+            controller.abort();
+            // button will not have listeners in the future
+            grid.deleteButton(index);
+          },
+          { signal: controller.signal }
+        );
+      }
     });
   };
   const listen = () => {

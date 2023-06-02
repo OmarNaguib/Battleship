@@ -12,6 +12,9 @@ const computer = ComputerPlayer("Computer");
 
 human.setBoard(Gameboard());
 computer.setBoard(Gameboard());
+// Todo: convert to real board picking
+human.getBoard().placeShip(0, "h", 5);
+computer.getBoard().placeShip(0, "h", 5);
 
 human.setEnemyPlayer(computer);
 computer.setEnemyPlayer(human);
@@ -24,3 +27,5 @@ computer.setEnemyGrid(computerGrid);
 
 container.appendChild(computerGrid.grid);
 container.appendChild(humanGrid.grid);
+
+gameLoop([human, computer]);
