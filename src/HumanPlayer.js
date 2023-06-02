@@ -1,5 +1,6 @@
 import pipe from "lodash/fp/flow";
 import Player from "./Player";
+import addPicking from "./UI/addPicking";
 
 function addHumanHit(player) {
   const hitEnemy = async () => {
@@ -10,6 +11,7 @@ function addHumanHit(player) {
 
   return { ...player, hitEnemy };
 }
-const HumanPLayer = pipe(Player, addHumanHit);
+
+const HumanPLayer = pipe(Player, addPicking, addHumanHit);
 
 export default HumanPLayer;

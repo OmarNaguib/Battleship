@@ -38,3 +38,7 @@ body {
   width: 500px;
   border-radius: 10px;
 }
+
+.ship-holder {
+  height: 50px;
+}
