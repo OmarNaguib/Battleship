@@ -3,6 +3,18 @@
 import GameBoard from "./Gameboard";
 import ComputerPlayer from "./ComputerPlayer";
 
+function endGame(winnerIndex) {
+  const endMessage = document.querySelector(".end-message");
+  const message = document.querySelector(".message");
+  if (winnerIndex === 0)
+    message.textContent += `Humanity has won!
+    Computers' fleet has been destroyed.`;
+  if (winnerIndex === 1)
+    message.textContent += `Computers have won!
+  Humanity's fleet has been destroyed.`;
+  endMessage.style.display = "grid";
+}
+
 export default async function gameLoop(players) {
   let currentPlayer = 0;
   let gameEnd = false;
@@ -12,4 +24,5 @@ export default async function gameLoop(players) {
     currentPlayer = (currentPlayer + 1) % 2;
     if (players[currentPlayer].getBoard().allSunk()) gameEnd = true;
   }
+  endGame((currentPlayer + 1) % 2);
 }
