@@ -20,10 +20,18 @@ function Grid(array) {
   const deleteButton = (index) => {
     delete buttonList[index];
   };
-  const updateSquare = (index) => {
+  const updateSquare = (index, isHit) => {
     buttonList[index].classList.add("hit");
+    if (isHit) buttonList[index].classList.add("ship");
     // button will not have listeners in the future
     deleteButton(index);
+  };
+
+  const displayShipH = (index, length) => {};
+  const displayShipV = (idnex, length) => {};
+  const displayShip = (index, orientation, length) => {
+    if (orientation === "h") displayShipH(index, length);
+    if (orientation === "v") displayShipV(index, length);
   };
 
   return {

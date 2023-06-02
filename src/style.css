@@ -42,3 +42,10 @@ body {
 .ship-holder {
   height: 50px;
 }
+
+.ship {
+  background-color: black;
+}
+.ship.hit {
+  background-color: red;
+}
