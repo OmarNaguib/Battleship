@@ -20,8 +20,6 @@ export default async function gameLoop(players) {
   let gameEnd = false;
   while (!gameEnd) {
     const { hitSquare, isHit } = await players[currentPlayer].hitEnemy();
-    // Todo: update the UI
-    console.log(hitSquare);
     players[currentPlayer].getEnemyGrid().updateSquare(hitSquare);
     currentPlayer = (currentPlayer + 1) % 2;
     if (players[currentPlayer].getBoard().allSunk()) gameEnd = true;

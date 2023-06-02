@@ -61,5 +61,6 @@ function addListening(grid) {
     listen,
   };
 }
+
 const GridThatListens = pipe(Grid, addListening);
 export { Grid, GridThatListens };

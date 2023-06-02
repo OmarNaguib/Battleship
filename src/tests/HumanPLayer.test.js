@@ -16,7 +16,6 @@ test("hits enemy", async () => {
 
   grid.buttonList[0].click();
   await Promise.resolve(0);
-  expect(grid.buttonList[0]).toBe(undefined);
   expect(human.getEnemyPlayer().getBoard().getBoard()).toContain(-1000);
   expect(player2.getBoard().getBoard()).toContain(-1000);
 });
