@@ -37,6 +37,8 @@ body {
 }
 
 .square {
+  position: relative;
+  padding: 2px;
 }
 .end-message {
   display: none;
@@ -62,7 +64,10 @@ body {
 }
 
 .ship-holder {
-  height: 50px;
+  position: relative;
+  height: 42px;
+  background-color: rgb(68, 190, 68);
+  z-index: 2;
 }
 
 .ship {

@@ -22,7 +22,6 @@ export default function addPicking(player) {
         button.addEventListener(
           "click",
           () => {
-            console.log("clicked");
             callback(index);
             controller.abort();
           },
@@ -41,13 +40,11 @@ export default function addPicking(player) {
   const addHover = (length, buttonList) => {
     const shipHolder = document.createElement("div");
     shipHolder.classList.add("ship-holder");
-    shipHolder.style.width = length * buttonList[0].style.width;
-    console.log("hover");
+    shipHolder.style.width = `${length * 50 - 2 * 4}px`;
 
     buttonList.forEach((button) => {
-      button.addEventListener("onmouseenter", () => {
-        console.log("inside");
-        button.appendChild(shipHolder);
+      button.addEventListener("mouseenter", (e) => {
+        e.target.appendChild(shipHolder);
       });
     });
   };
@@ -75,9 +72,7 @@ export default function addPicking(player) {
         .placeShip(pick, getOrientation(), shipLengths[currentIndex]);
       if (isValid) {
         myGrid.displayShip(pick, getOrientation(), shipLengths[currentIndex]);
-        console.log(getOrientation());
         currentIndex += 1;
-        // Todo: update the display
       }
     }
   };
