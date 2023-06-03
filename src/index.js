@@ -13,8 +13,7 @@ async function game() {
 
   human.setBoard(Gameboard());
   computer.setBoard(Gameboard());
-  // Todo: convert to real board picking
-  human.getBoard().placeShip(0, "h", 5);
+
   computer.getBoard().placeShip(0, "h", 5);
 
   human.setEnemyPlayer(computer);
@@ -25,6 +24,7 @@ async function game() {
 
   human.setEnemyGrid(humanGrid);
   computer.setEnemyGrid(computerGrid);
+
   container.appendChild(humanGrid.grid);
   container.appendChild(computerGrid.grid);
 
