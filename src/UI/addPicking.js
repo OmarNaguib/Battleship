@@ -25,18 +25,19 @@ export default function addPicking(player) {
   //   element.setAttribute("width", dimensions.width);
   //   element.setAttribute("height", dimensions.height);
   // };
-  // const reverseElementDimensions = (element) => {
-  //   const newWidth = element.style.height;
-  //   const newHeight = element.style.width;
-  //   element.setAttribute("width", newWidth);
-  //   element.setAttribute("height", newHeight);
-  // };
-  // const orientaionButton = document.querySelector("button.rotate");
-  // orientaionButton.addEventListener("click", () => {
-  //   toggleOrientaion();
-  //   const shipHolder = document.querySelector("ship-holder");
-  //   reverseElementDimensions(shipHolder);
-  // });
+  const reverseElementDimensions = (element) => {
+    const newWidth = element.style.height;
+    console.log(element.style.height, newWidth);
+    const newHeight = element.style.width;
+    element.setAttribute("style", `width: ${newWidth}; height: ${newHeight}`);
+    console.log(element);
+  };
+  const orientaionButton = document.querySelector("button.rotate");
+  orientaionButton.addEventListener("click", () => {
+    toggleOrientaion();
+    const shipHolder = document.querySelector(".ship-holder");
+    reverseElementDimensions(shipHolder);
+  });
 
   const addListeners = (buttonList, callback) => {
     const controller = new AbortController();
@@ -79,11 +80,13 @@ export default function addPicking(player) {
       button.addEventListener(
         "mouseleave",
         (e) => {
+          if (!e.toElement.classList.contains("square")) return;
           e.target.removeChild(shipHolder);
         },
         { useCapture: true, signal: hoverController.signal }
       );
     });
+    buttonList[0].appendChild(shipHolder);
     return { hoverController, shipHolder };
   };
 

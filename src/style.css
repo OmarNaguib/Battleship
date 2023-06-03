@@ -18,7 +18,7 @@ body {
   grid-template-rows: 1fr;
   grid-auto-flow: column;
   place-content: center;
-  place-content: center;
+  place-items: center;
   gap: 50px;
 }
 .grid {
@@ -66,7 +66,8 @@ body {
 .ship-holder {
   pointer-events: none;
   position: relative;
-  background-color: rgb(68, 190, 68);
+  background-color: black;
+  border-radius: 20px;
   z-index: 2;
 }
 
