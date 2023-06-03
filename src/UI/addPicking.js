@@ -21,10 +21,6 @@ export default function addPicking(player) {
     return null;
   };
 
-  // const setElementDimensions = (element, dimensions) => {
-  //   element.setAttribute("width", dimensions.width);
-  //   element.setAttribute("height", dimensions.height);
-  // };
   const reverseElementDimensions = (element) => {
     const newWidth = element.style.height;
     console.log(element.style.height, newWidth);
@@ -81,7 +77,7 @@ export default function addPicking(player) {
         "mouseleave",
         (e) => {
           if (!e.toElement.classList.contains("square")) return;
-          e.target.removeChild(shipHolder);
+          if (e.target.hasChildNodes()) e.target.removeChild(shipHolder);
         },
         { useCapture: true, signal: hoverController.signal }
       );
