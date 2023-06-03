@@ -38,15 +38,21 @@ export default function addPicking(player) {
   };
 
   const addHover = (length, buttonList) => {
+    const controller = new AbortController();
     const shipHolder = document.createElement("div");
     shipHolder.classList.add("ship-holder");
     shipHolder.style.width = `${length * 50 - 2 * 4}px`;
 
     buttonList.forEach((button) => {
-      button.addEventListener("mouseenter", (e) => {
-        e.target.appendChild(shipHolder);
-      });
+      button.addEventListener(
+        "mouseenter",
+        (e) => {
+          e.target.appendChild(shipHolder);
+        },
+        { signal: controller.signal }
+      );
     });
+    return controller;
   };
 
   const startPicking = async () => {
@@ -73,6 +79,7 @@ export default function addPicking(player) {
       if (isValid) {
         myGrid.displayShip(pick, getOrientation(), shipLengths[currentIndex]);
         currentIndex += 1;
+        hoverController.abort();
       }
     }
   };
