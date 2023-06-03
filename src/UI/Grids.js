@@ -30,7 +30,12 @@ function Grid(array) {
     for (let i = 0; i < length; i += 1)
       buttonList[index + i].classList.add("ship");
   };
-  const displayShipV = (idnex, length) => {};
+  const displayShipV = (index, length) => {
+    for (let i = 0; i < length; i += 1) {
+      console.log(index + i * 10);
+      buttonList[index + i * 10].classList.add("ship");
+    }
+  };
   const displayShip = (index, orientation, length) => {
     if (orientation === "h") displayShipH(index, length);
     if (orientation === "v") displayShipV(index, length);

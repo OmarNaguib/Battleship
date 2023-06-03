@@ -1,5 +1,20 @@
 /* eslint-disable no-await-in-loop */
 export default function addPicking(player) {
+  let orientation = "h";
+  const getOrientation = () => orientation;
+  const setOrientation = (value) => {
+    orientation = value;
+  };
+
+  const toggleOrientaion = () => {
+    if (getOrientation() === "h") setOrientation("v");
+    else if (getOrientation() === "v") setOrientation("h");
+  };
+  const orientaionButton = document.querySelector("button.rotate");
+  orientaionButton.addEventListener("click", () => {
+    toggleOrientaion();
+  });
+
   const addListeners = (buttonList, callback) => {
     const controller = new AbortController();
     buttonList.forEach((button, index) => {
@@ -57,9 +72,10 @@ export default function addPicking(player) {
       const pick = await listenForPick(myGrid.buttonList);
       const isValid = player
         .getBoard()
-        .placeShip(pick, "h", shipLengths[currentIndex]);
+        .placeShip(pick, getOrientation(), shipLengths[currentIndex]);
       if (isValid) {
-        myGrid.displayShip(pick, "h", shipLengths[currentIndex]);
+        myGrid.displayShip(pick, getOrientation(), shipLengths[currentIndex]);
+        console.log(getOrientation());
         currentIndex += 1;
         // Todo: update the display
       }
