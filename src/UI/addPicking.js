@@ -10,10 +10,33 @@ export default function addPicking(player) {
     if (getOrientation() === "h") setOrientation("v");
     else if (getOrientation() === "v") setOrientation("h");
   };
-  const orientaionButton = document.querySelector("button.rotate");
-  orientaionButton.addEventListener("click", () => {
-    toggleOrientaion();
-  });
+
+  const shipDimensions = (length) => {
+    const longEdge = length * 50 - 2 * 4;
+    const shortEdge = 42;
+    if (getOrientation() === "h")
+      return { width: `${longEdge}px`, height: `${shortEdge}px` };
+    if (getOrientation() === "v")
+      return { width: `${shortEdge}px`, height: `${longEdge}px` };
+    return null;
+  };
+
+  // const setElementDimensions = (element, dimensions) => {
+  //   element.setAttribute("width", dimensions.width);
+  //   element.setAttribute("height", dimensions.height);
+  // };
+  // const reverseElementDimensions = (element) => {
+  //   const newWidth = element.style.height;
+  //   const newHeight = element.style.width;
+  //   element.setAttribute("width", newWidth);
+  //   element.setAttribute("height", newHeight);
+  // };
+  // const orientaionButton = document.querySelector("button.rotate");
+  // orientaionButton.addEventListener("click", () => {
+  //   toggleOrientaion();
+  //   const shipHolder = document.querySelector("ship-holder");
+  //   reverseElementDimensions(shipHolder);
+  // });
 
   const addListeners = (buttonList, callback) => {
     const controller = new AbortController();
@@ -38,21 +61,30 @@ export default function addPicking(player) {
   };
 
   const addHover = (length, buttonList) => {
-    const controller = new AbortController();
+    const hoverController = new AbortController();
     const shipHolder = document.createElement("div");
     shipHolder.classList.add("ship-holder");
-    shipHolder.style.width = `${length * 50 - 2 * 4}px`;
+    const dimensions = shipDimensions(length);
+    shipHolder.style.width = dimensions.width;
+    shipHolder.style.height = dimensions.height;
 
     buttonList.forEach((button) => {
       button.addEventListener(
-        "mouseenter",
+        "mouseover",
         (e) => {
           e.target.appendChild(shipHolder);
         },
-        { signal: controller.signal }
+        { useCapture: true, signal: hoverController.signal }
+      );
+      button.addEventListener(
+        "mouseleave",
+        (e) => {
+          e.target.removeChild(shipHolder);
+        },
+        { useCapture: true, signal: hoverController.signal }
       );
     });
-    return controller;
+    return { hoverController, shipHolder };
   };
 
   const startPicking = async () => {
@@ -68,7 +100,7 @@ export default function addPicking(player) {
     const shipLengths = [5, 4, 3, 3, 2];
     let currentIndex = 0;
     while (currentIndex < 5) {
-      const hoverController = addHover(
+      const { hoverController, shipHolder } = addHover(
         shipLengths[currentIndex],
         myGrid.buttonList
       );
@@ -79,8 +111,9 @@ export default function addPicking(player) {
       if (isValid) {
         myGrid.displayShip(pick, getOrientation(), shipLengths[currentIndex]);
         currentIndex += 1;
-        hoverController.abort();
       }
+      hoverController.abort();
+      myGrid.buttonList[pick].removeChild(shipHolder);
     }
   };
   return { ...player, startPicking };
