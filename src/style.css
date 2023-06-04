@@ -3,6 +3,12 @@ body {
   margin: 0;
   height: 100vh;
 }
+:root {
+  --color-cyan-300: #67e8f9;
+  --color-cyan-400: #22d3ee;
+  --color-blue-600: #2563eb;
+  --color-rose-600: #e11d48;
+}
 
 @font-face {
   font-family: cool;
@@ -12,6 +18,7 @@ body {
 body {
   display: grid;
   grid-template-rows: 200px 1fr;
+  background-color: var(--color-cyan-300);
 }
 header {
   font-family: cool;
@@ -24,9 +31,38 @@ header {
   grid-column: 2/3;
   grid-row: 1/2;
   z-index: 1;
-  height: 500px;
-  width: 500px;
-  background-color: peachpuff;
+  height: 510px;
+  width: 510px;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  border-radius: 15px;
+  gap: 15px;
+  font-size: 35px;
+  box-sizing: border-box;
+}
+
+.start-message > span:nth-of-type(1) {
+  margin-bottom: 30px;
+}
+.start-message > span:nth-of-type(3) {
+  font-size: 50px;
+}
+
+.start-message > button,
+.end-message button {
+  background-color: white;
+  border: 3px solid rgb(0, 0, 0);
+  font-size: 30px;
+  border-radius: 5px;
+  padding: 10px 10px;
+}
+.start-message > button:hover,
+.end-message button:hover {
+  border-color: rgb(28, 28, 202);
 }
 
 .container {

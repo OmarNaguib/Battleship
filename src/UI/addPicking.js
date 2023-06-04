@@ -106,7 +106,7 @@ export default function addPicking(player) {
         shipLengths[currentIndex],
         myGrid.buttonList
       );
-      message.textContent = `Place Your ${shipNames[currentIndex]}`;
+      message.textContent = `${shipNames[currentIndex]}`;
       const pick = await listenForPick(myGrid.buttonList);
       const isValid = player
         .getBoard()

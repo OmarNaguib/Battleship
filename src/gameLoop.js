@@ -5,10 +5,10 @@ function endGame(winnerIndex) {
   const endMessage = document.querySelector(".end-message");
   const message = document.querySelector(".message");
   if (winnerIndex === 0)
-    message.textContent += `Humanity has won!
+    message.innerHTML += `Humanity has won!<br />
     Computers' fleet has been destroyed.`;
   if (winnerIndex === 1)
-    message.textContent += `Computers have won!
+    message.innerHTML += `Computers have won!<br />
   Humanity's fleet has been destroyed.`;
   endMessage.style.display = "grid";
 }
