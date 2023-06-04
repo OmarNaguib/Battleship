@@ -1,7 +1,5 @@
 /* eslint-disable no-await-in-loop */
 // disapled because there is no need for the promises to be running in parallel
-import GameBoard from "./Gameboard";
-import ComputerPlayer from "./ComputerPlayer";
 
 function endGame(winnerIndex) {
   const endMessage = document.querySelector(".end-message");
