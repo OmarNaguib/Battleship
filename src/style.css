@@ -107,12 +107,19 @@ header {
   align-items: center;
 }
 .message-content {
+  display: grid;
+  place-content: center;
+}
+.end-message .message {
+  font-size: 35px;
+}
+.message-content {
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  height: 500px;
-  width: 500px;
+  height: 300px;
+  width: 300px;
   border-radius: 10px;
 }
 
