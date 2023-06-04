@@ -23,10 +23,8 @@ export default function addPicking(player) {
 
   const reverseElementDimensions = (element) => {
     const newWidth = element.style.height;
-    console.log(element.style.height, newWidth);
     const newHeight = element.style.width;
     element.setAttribute("style", `width: ${newWidth}; height: ${newHeight}`);
-    console.log(element);
   };
   const orientaionButton = document.querySelector("button.rotate");
   orientaionButton.addEventListener("click", () => {
@@ -56,6 +54,10 @@ export default function addPicking(player) {
     });
     return pick;
   };
+  const removeStartingMessage = () => {
+    const startingMessage = document.querySelector(".start-message");
+    startingMessage.style.display = "none";
+  };
 
   const addHover = (length, buttonList) => {
     const hoverController = new AbortController();
@@ -71,7 +73,7 @@ export default function addPicking(player) {
         (e) => {
           e.target.appendChild(shipHolder);
         },
-        { useCapture: true, signal: hoverController.signal }
+        { signal: hoverController.signal }
       );
       button.addEventListener(
         "mouseleave",
@@ -79,15 +81,16 @@ export default function addPicking(player) {
           if (!e.toElement.classList.contains("square")) return;
           if (e.target.hasChildNodes()) e.target.removeChild(shipHolder);
         },
-        { useCapture: true, signal: hoverController.signal }
+        { signal: hoverController.signal }
       );
     });
-    buttonList[0].appendChild(shipHolder);
+    if (length === 5) buttonList[0].appendChild(shipHolder);
     return { hoverController, shipHolder };
   };
 
   const startPicking = async () => {
     const myGrid = player.getEnemyPlayer().getEnemyGrid();
+    const message = document.querySelector("span.ship-message");
 
     const shipNames = [
       "Carrier",
@@ -103,6 +106,7 @@ export default function addPicking(player) {
         shipLengths[currentIndex],
         myGrid.buttonList
       );
+      message.textContent = `Place Your ${shipNames[currentIndex]}`;
       const pick = await listenForPick(myGrid.buttonList);
       const isValid = player
         .getBoard()
@@ -114,6 +118,7 @@ export default function addPicking(player) {
       hoverController.abort();
       myGrid.buttonList[pick].removeChild(shipHolder);
     }
+    removeStartingMessage();
   };
   return { ...player, startPicking };
 }
