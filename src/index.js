@@ -14,8 +14,6 @@ async function game() {
   human.setBoard(Gameboard());
   computer.setBoard(Gameboard());
 
-  computer.getBoard().placeShip(0, "h", 5);
-
   human.setEnemyPlayer(computer);
   computer.setEnemyPlayer(human);
 
@@ -29,6 +27,7 @@ async function game() {
   container.appendChild(computerGrid.grid);
 
   await human.startPicking();
+  computer.startPicking();
 
   gameLoop([human, computer]);
 }

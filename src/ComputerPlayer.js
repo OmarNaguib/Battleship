@@ -20,5 +20,20 @@ function addComputerHit(player) {
     hitEnemy,
   };
 }
-const ComputerPlayer = pipe(Player, addComputerHit);
+
+function addComputerPicking(player) {
+  function startPicking() {
+    player.getBoard().placeShip(1, "h", 5);
+    player.getBoard().placeShip(35, "v", 4);
+    player.getBoard().placeShip(70, "v", 3);
+    player.getBoard().placeShip(29, "v", 3);
+    player.getBoard().placeShip(21, "v", 2);
+  }
+
+  return {
+    ...player,
+    startPicking,
+  };
+}
+const ComputerPlayer = pipe(Player, addComputerHit, addComputerPicking);
 export default ComputerPlayer;
