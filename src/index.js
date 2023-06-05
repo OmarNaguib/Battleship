@@ -25,9 +25,9 @@ async function game() {
 
   container.appendChild(computerGrid.grid);
 
-  await human.startPicking();
+  // await human.startPicking();
   container.appendChild(humanGrid.grid);
-  computer.startPicking();
+  // computer.startPicking();
 
   gameLoop([human, computer]);
 }

@@ -112,20 +112,20 @@ header {
   justify-content: center;
   align-items: center;
 }
-.message-content {
-  display: grid;
-  place-content: center;
-}
+
 .end-message .message {
   font-size: 35px;
 }
 .message-content {
+  display: grid;
+  justify-content: space-between;
+  align-content: space-around;
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  height: 300px;
-  width: 300px;
+  height: 350px;
+  width: 350px;
   border-radius: 10px;
 }
 
