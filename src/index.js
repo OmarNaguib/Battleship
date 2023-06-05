@@ -23,10 +23,10 @@ async function game() {
   human.setEnemyGrid(humanGrid);
   computer.setEnemyGrid(computerGrid);
 
-  container.appendChild(humanGrid.grid);
   container.appendChild(computerGrid.grid);
 
   await human.startPicking();
+  container.appendChild(humanGrid.grid);
   computer.startPicking();
 
   gameLoop([human, computer]);

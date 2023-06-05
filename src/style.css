@@ -9,7 +9,7 @@ body {
   --color-blue-600: #2563eb;
   --color-rose-600: #e11d48;
 }
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700&display=swap");
 @font-face {
   font-family: cool;
   src: url("../assets/space-mission-font/SpaceMission-rgyw9.otf")
@@ -18,7 +18,11 @@ body {
 body {
   display: grid;
   grid-template-rows: 200px 1fr;
-  background-color: var(--color-cyan-300);
+  background-color: var(--color-blue-600);
+  font-family: "Roboto Slab", serif;
+}
+button {
+  font: inherit;
 }
 header {
   font-family: cool;
@@ -26,6 +30,7 @@ header {
   display: grid;
   place-content: center;
   place-items: center;
+  color: white;
 }
 .start-message {
   grid-column: 2/3;
@@ -33,7 +38,7 @@ header {
   z-index: 1;
   height: 510px;
   width: 510px;
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(0, 0, 0, 0.7);
   color: white;
   display: flex;
   flex-direction: column;
@@ -54,7 +59,7 @@ header {
 
 .start-message > button,
 .end-message button {
-  background-color: white;
+  background-color: var(--color-cyan-300);
   border: 3px solid rgb(0, 0, 0);
   font-size: 30px;
   border-radius: 5px;
@@ -62,7 +67,7 @@ header {
 }
 .start-message > button:hover,
 .end-message button:hover {
-  border-color: rgb(28, 28, 202);
+  background-color: var(--color-cyan-400);
 }
 
 .container {
@@ -80,11 +85,11 @@ header {
   grid-template-rows: repeat(10, 50px);
   width: 500px;
 }
-.grid:nth-of-type(1) {
+.grid:nth-of-type(2) {
   grid-column: 1/2;
   grid-row: 1/2;
 }
-.grid:nth-of-type(2) {
+.grid:nth-of-type(1) {
   grid-column: 2/3;
   grid-row: 1/2;
 }
@@ -92,6 +97,7 @@ header {
 .square {
   position: relative;
   padding: 2px;
+  background-color: white;
 }
 .end-message {
   display: none;
