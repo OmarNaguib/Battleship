@@ -102,6 +102,7 @@ export default function addPicking(player) {
     const shipLengths = [5, 4, 3, 3, 2];
     let currentIndex = 0;
     while (currentIndex < 5) {
+      console.log("here");
       const { hoverController, shipHolder } = addHover(
         shipLengths[currentIndex],
         myGrid.buttonList
@@ -115,8 +116,11 @@ export default function addPicking(player) {
         myGrid.displayShip(pick, getOrientation(), shipLengths[currentIndex]);
         currentIndex += 1;
       }
+      // this tests prevents an error when user clicks multiple times without moving the the mouse
+      if (myGrid.buttonList[pick].hasChildNodes())
+        myGrid.buttonList[pick].removeChild(shipHolder);
+
       hoverController.abort();
-      myGrid.buttonList[pick].removeChild(shipHolder);
     }
     removeStartingMessage();
   };
